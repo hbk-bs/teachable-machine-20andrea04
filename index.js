@@ -98,7 +98,7 @@ function showHeartImage() {
 	// Nach 3 Sekunden wieder entfernen
 	setTimeout(() => {
 	  img.remove();
-	}, 3000);
+	}, 1000);
   }
 
 
@@ -114,7 +114,7 @@ function showHeartImage() {
 	// Nach 3 Sekunden wieder entfernen
 	setTimeout(() => {
 	  img.remove();
-	}, 3000);
+	}, 1000);
   }
 
   function showPeaceImage() {
@@ -129,7 +129,7 @@ function showHeartImage() {
 	// Nach 3 Sekunden wieder entfernen
 	setTimeout(() => {
 	  img.remove();
-	}, 3000);
+	}, 1000);
   }
 
   function showRockImage() {
@@ -144,7 +144,7 @@ function showHeartImage() {
 	// Nach 3 Sekunden wieder entfernen
 	setTimeout(() => {
 	  img.remove();
-	}, 3000);
+	}, 1000);
   }
 
   function showStopImage() {
@@ -159,7 +159,7 @@ function showHeartImage() {
 	// Nach 3 Sekunden wieder entfernen
 	setTimeout(() => {
 	  img.remove();
-	}, 3000);
+	}, 1000);
   }
 
   function showTelephoneImage() {
@@ -174,6 +174,6 @@ function showHeartImage() {
 	// Nach 3 Sekunden wieder entfernen
 	setTimeout(() => {
 	  img.remove();
-	}, 3000);
+	}, 1000);
   }
 
