@@ -52,12 +52,12 @@ function gotResult(results) {
 	label = results[0].label;
 
 	// Wenn Herz erkannt – zeige das Bild
-	if (label.toLowerCase() === "herz") {
+	if (label.toLowerCase() === "heart") {
 		showHeartImage();
 	}
 
 	// Wenn Kreis erkannt – zeige das Bild
-	if (label.toLowerCase() === "kreis") {
+	if (label.toLowerCase() === "circle") {
 		showCircleImage();
 	}
 
@@ -95,3 +95,5 @@ function showHeartImage() {
 	  img.remove();
 	}, 3000);
   }
+
+  
