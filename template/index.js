@@ -2,7 +2,7 @@
 let classifier;
 // Model URL
 // HERE
-let imageModelURL = 'https://teachablemachine.withgoogle.com/models/6eL2SJyis/';
+let imageModelURL = 'https://teachablemachine.withgoogle.com/models/qTP-rD1mC/';
 
 // Video
 let video;
@@ -53,3 +53,4 @@ function gotResult(results) {
 	// Classifiy again!
 	classifyVideo();
 }
+
