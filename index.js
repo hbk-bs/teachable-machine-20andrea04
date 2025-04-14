@@ -56,12 +56,6 @@ function gotResult(results) {
 		showHeartImage();
 	}
 
-	// Wenn Kreis erkannt – zeige das Bild
-	if (label.toLowerCase() === "circle") {
-		showCircleImage();
-	}
-
-
 	// Wenn Dreieck erkannt – zeige das Bild
 	if (label.toLowerCase() === "triangle") {
 		showTriangleImage();
@@ -84,7 +78,7 @@ function gotResult(results) {
 
 	// Wenn telephone erkannt – zeige das Bild
 	if (label.toLowerCase() === "telephone") {
-		showStopImage();
+		showTelephoneImage();
 	}
 
 	
@@ -107,20 +101,6 @@ function showHeartImage() {
 	}, 3000);
   }
 
-  function showCircleImage() {
-	// Prüfen ob schon ein Kreis angezeigt wird
-	if (document.querySelector(".circle-img")) return;
-  
-	const img = document.createElement("img");
-	img.src = "assets/images/kreis.png"; // Pfad zum Bild
-	img.classList.add("circle-img");
-	document.body.appendChild(img);
-  
-	// Nach 3 Sekunden wieder entfernen
-	setTimeout(() => {
-	  img.remove();
-	}, 3000);
-  }
 
   function showTriangleImage() {
 	// Prüfen ob schon ein Dreieck angezeigt wird
