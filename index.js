@@ -72,6 +72,21 @@ function gotResult(results) {
 		showPeaceImage();
 	}
 
+	// Wenn rock erkannt – zeige das Bild
+	if (label.toLowerCase() === "rock") {
+		showRockImage();
+	}
+
+	// Wenn stop erkannt – zeige das Bild
+	if (label.toLowerCase() === "stop") {
+		showStopImage();
+	}
+
+	// Wenn telephone erkannt – zeige das Bild
+	if (label.toLowerCase() === "telephone") {
+		showStopImage();
+	}
+
 	
 	// Classifiy again!
 	classifyVideo();
@@ -129,6 +144,51 @@ function showHeartImage() {
 	const img = document.createElement("img");
 	img.src = "assets/images/peace.png"; // Pfad zum Bild
 	img.classList.add("peace-img");
+	document.body.appendChild(img);
+  
+	// Nach 3 Sekunden wieder entfernen
+	setTimeout(() => {
+	  img.remove();
+	}, 3000);
+  }
+
+  function showRockImage() {
+	// Prüfen ob schon ein rock angezeigt wird
+	if (document.querySelector(".rock-img")) return;
+  
+	const img = document.createElement("img");
+	img.src = "assets/images/rock.png"; // Pfad zum Bild
+	img.classList.add("rock-img");
+	document.body.appendChild(img);
+  
+	// Nach 3 Sekunden wieder entfernen
+	setTimeout(() => {
+	  img.remove();
+	}, 3000);
+  }
+
+  function showStopImage() {
+	// Prüfen ob schon ein stop angezeigt wird
+	if (document.querySelector(".stop-img")) return;
+  
+	const img = document.createElement("img");
+	img.src = "assets/images/stop.png"; // Pfad zum Bild
+	img.classList.add("rock-img");
+	document.body.appendChild(img);
+  
+	// Nach 3 Sekunden wieder entfernen
+	setTimeout(() => {
+	  img.remove();
+	}, 3000);
+  }
+
+  function showStopImage() {
+	// Prüfen ob schon ein telephone angezeigt wird
+	if (document.querySelector(".telephone-img")) return;
+  
+	const img = document.createElement("img");
+	img.src = "assets/images/telefon.png"; // Pfad zum Bild
+	img.classList.add("telephone-img");
 	document.body.appendChild(img);
   
 	// Nach 3 Sekunden wieder entfernen
