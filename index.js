@@ -173,7 +173,7 @@ function showHeartImage() {
   
 	const img = document.createElement("img");
 	img.src = "assets/images/stop.png"; // Pfad zum Bild
-	img.classList.add("rock-img");
+	img.classList.add("stop-img");
 	document.body.appendChild(img);
   
 	// Nach 3 Sekunden wieder entfernen
@@ -182,7 +182,7 @@ function showHeartImage() {
 	}, 3000);
   }
 
-  function showStopImage() {
+  function showTelephoneImage() {
 	// Prüfen ob schon ein telephone angezeigt wird
 	if (document.querySelector(".telephone-img")) return;
   
