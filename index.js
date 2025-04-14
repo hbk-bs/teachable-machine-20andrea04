@@ -61,6 +61,17 @@ function gotResult(results) {
 		showCircleImage();
 	}
 
+
+	// Wenn Dreieck erkannt – zeige das Bild
+	if (label.toLowerCase() === "triangle") {
+		showTriangleImage();
+	}
+
+	// Wenn peace erkannt – zeige das Bild
+	if (label.toLowerCase() === "peace") {
+		showPeaceImage();
+	}
+
 	
 	// Classifiy again!
 	classifyVideo();
@@ -96,4 +107,33 @@ function showHeartImage() {
 	}, 3000);
   }
 
+  function showTriangleImage() {
+	// Prüfen ob schon ein Dreieck angezeigt wird
+	if (document.querySelector(".triangle-img")) return;
   
+	const img = document.createElement("img");
+	img.src = "assets/images/dreieck.png"; // Pfad zum Bild
+	img.classList.add("triangle-img");
+	document.body.appendChild(img);
+  
+	// Nach 3 Sekunden wieder entfernen
+	setTimeout(() => {
+	  img.remove();
+	}, 3000);
+  }
+
+  function showPeaceImage() {
+	// Prüfen ob schon ein Peace angezeigt wird
+	if (document.querySelector(".peace-img")) return;
+  
+	const img = document.createElement("img");
+	img.src = "assets/images/peace.png"; // Pfad zum Bild
+	img.classList.add("peace-img");
+	document.body.appendChild(img);
+  
+	// Nach 3 Sekunden wieder entfernen
+	setTimeout(() => {
+	  img.remove();
+	}, 3000);
+  }
+
