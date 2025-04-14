@@ -56,6 +56,11 @@ function gotResult(results) {
 		showHeartImage();
 	}
 
+	// Wenn Kreis erkannt – zeige das Bild
+	if (label.toLowerCase() === "kreis") {
+		showCircleImage();
+	}
+
 	
 	// Classifiy again!
 	classifyVideo();
@@ -68,6 +73,21 @@ function showHeartImage() {
 	const img = document.createElement("img");
 	img.src = "assets/images/herz.png"; // Pfad zum Bild
 	img.classList.add("heart-img");
+	document.body.appendChild(img);
+  
+	// Nach 3 Sekunden wieder entfernen
+	setTimeout(() => {
+	  img.remove();
+	}, 3000);
+  }
+
+  function showCircleImage() {
+	// Prüfen ob schon ein Kreis angezeigt wird
+	if (document.querySelector(".circle-img")) return;
+  
+	const img = document.createElement("img");
+	img.src = "assets/images/kreis.png"; // Pfad zum Bild
+	img.classList.add("circle-img");
 	document.body.appendChild(img);
   
 	// Nach 3 Sekunden wieder entfernen
