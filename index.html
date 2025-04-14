@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>forms with hands</title>
+    <style>
+    html,
+
+    body {
+        height: 100%;
+        font-family: Arial, Helvetica, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        background-color: white;
+        color: black;
+        text-align: center;
+       }
+
+    header {
+        margin-top: 20px;
+    }
+
+    h1{
+        font-size: 3em;
+        font-weight: bold;
+    }
+
+    h2{
+        font-size: 1.5rem;
+    }
+
+    main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; 
+    padding-top: 40px;
+
+    }
+
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+    </style>
+
+</head>
+
+<header> 
+    <h1>forms with hands</h1>
+    <h2>Make a form with your hands!</h2>
+</header>
+
+<body>
+<main>
+    <div id="sketch"></div>
+    <a href="index.js">source code</a>
+    </main>
+		<script src="lib/ml5.1.2.1.min.js"></script>
+		<script src="lib/p5.min.js"></script>
+    <!-- <script src="lib/p5.sound.min.js"></script> -->
+
+    <script src="index.js"></script>
+</body>
+</html>

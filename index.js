@@ -50,7 +50,28 @@ function gotResult(results) {
 	// The results are in an array ordered by confidence.
 	// console.log(results[0]);
 	label = results[0].label;
+
+	// Wenn Herz erkannt – zeige das Bild
+	if (label.toLowerCase() === "herz") {
+		showHeartImage();
+	}
+
+	
 	// Classifiy again!
 	classifyVideo();
 }
 
+function showHeartImage() {
+	// Prüfen ob schon ein Herz angezeigt wird
+	if (document.querySelector(".heart-img")) return;
+  
+	const img = document.createElement("img");
+	img.src = "assets/images/herz.png"; // Pfad zum Bild
+	img.classList.add("heart-img");
+	document.body.appendChild(img);
+  
+	// Nach 3 Sekunden wieder entfernen
+	setTimeout(() => {
+	  img.remove();
+	}, 3000);
+  }
