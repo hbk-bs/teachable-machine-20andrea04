@@ -129,20 +129,20 @@ function createFloatingImage(imageType) {
   img.src = `assets/images/${imageType}.png`;
   img.classList.add(`${imageType}-floating-img`);
   
-  // Stil für das fliegende Bild
+  // Stil für das fliegende Bild - setze z-index niedrig, aber ändere nichts am Video
   img.style.position = 'absolute';
   img.style.width = '50px';
   img.style.height = 'auto';
-  img.style.zIndex = '1'; // Niedrigerer z-index als das Video
+  img.style.zIndex = '1'; // Niedrig, sodass es hinter dem Video erscheint
   
-  // Einfache Positionierung - nutze den gesamten Bildschirm
+  // Zufällige horizontale Position
   const randomX = Math.floor(Math.random() * (window.innerWidth - 50));
   
   // Start unterhalb des sichtbaren Bereichs
   img.style.left = `${randomX}px`;
   img.style.bottom = '-50px';
   
-  // Füge das Bild zum Body hinzu
+  // Füge das Bild zum Body hinzu, NICHT zu einem Canvas oder Video-Container
   document.body.appendChild(img);
   
   // Animation: Bewege das Bild nach oben
@@ -164,7 +164,7 @@ function createFloatingImage(imageType) {
   
   moveUp();
   
-  // Sicherheitsmaßnahme
+  // Nach einer bestimmten Zeit das Bild entfernen
   setTimeout(() => {
     if (img.parentNode) {
       img.remove();
