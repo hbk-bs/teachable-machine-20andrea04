@@ -171,6 +171,36 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+// Füge diesen Code am Ende deiner index.js-Datei hinzu
+document.addEventListener('DOMContentLoaded', function() {
+  // Warte ein bisschen, damit alle dynamischen Elemente erstellt werden
+  setTimeout(function() {
+    // Suche nach allen p-Elementen innerhalb des sketch-Divs
+    const sketchDiv = document.getElementById('sketch');
+    if (sketchDiv) {
+      const paragraphs = sketchDiv.querySelectorAll('p');
+      paragraphs.forEach(p => {
+        p.style.display = 'none';
+      });
+    }
+    
+    // Suche nach typischen Label-Containern
+    const possibleSelectors = [
+      '#labelContainer',
+      '.prediction',
+      '#label',
+      '.label-container'
+    ];
+    
+    possibleSelectors.forEach(selector => {
+      const element = document.querySelector(selector);
+      if (element) {
+        element.style.display = 'none';
+      }
+    });
+  }, 1000); // Warte 1 Sekunde
+});
+
 
 
 
