@@ -112,13 +112,13 @@ function showTelephoneImage() {
   showFloatingImages('telephone');
 }
 
-// Diese Funktion erzeugt mehrere aufsteigende Bilder
+// Diese Funktion erzeugt viele kleine, aufsteigende Bilder
 function showFloatingImages(imageType) {
-  // Erzeuge 5 Bilder mit Zeitabstand
+  // Erzeuge weniger Bilder - von 15 auf 5 reduziert
   for (let i = 0; i < 5; i++) {
     setTimeout(() => {
       createFloatingImage(imageType);
-    }, i * 400);
+    }, i * 400); // Erzeuge alle 400ms ein neues Bild
   }
 }
 
@@ -129,25 +129,24 @@ function createFloatingImage(imageType) {
   img.src = `assets/images/${imageType}.png`;
   img.classList.add(`${imageType}-floating-img`);
   
-  // Stil für das fliegende Bild - setze z-index niedrig, aber ändere nichts am Video
+  // Stil für das fliegende Bild
   img.style.position = 'absolute';
-  img.style.width = '50px';
+  img.style.width = '50px'; // Kleinere Größe
   img.style.height = 'auto';
-  img.style.zIndex = '1'; // Niedrig, sodass es hinter dem Video erscheint
   
   // Zufällige horizontale Position
   const randomX = Math.floor(Math.random() * (window.innerWidth - 50));
   
   // Start unterhalb des sichtbaren Bereichs
   img.style.left = `${randomX}px`;
-  img.style.bottom = '-50px';
+  img.style.bottom = '-50px'; // Starte unterhalb des Bildschirms
   
-  // Füge das Bild zum Body hinzu, NICHT zu einem Canvas oder Video-Container
+  // Füge das Bild zum Body hinzu
   document.body.appendChild(img);
   
   // Animation: Bewege das Bild nach oben
   let position = -50;
-  const speed = 2 + Math.random() * 3;
+  const speed = 2 + Math.random() * 3; // Zufällige Geschwindigkeit
   
   const moveUp = () => {
     position += speed;
@@ -164,7 +163,7 @@ function createFloatingImage(imageType) {
   
   moveUp();
   
-  // Nach einer bestimmten Zeit das Bild entfernen
+  // Nach einer bestimmten Zeit das Bild entfernen (falls nötig)
   setTimeout(() => {
     if (img.parentNode) {
       img.remove();
