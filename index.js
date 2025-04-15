@@ -30,15 +30,10 @@ function setup() {
 }
 
 function draw() {
-	background(0);
+	background(255);
 	// Draw the video
 	image(video, 0, 0);
 
-	// Draw the label
-	fill(255);
-	textSize(16);
-	textAlign(CENTER);
-	text(label, width / 2, height - 4);
 }
 
 // Get a prediction for the current video frame
@@ -169,36 +164,6 @@ document.addEventListener('DOMContentLoaded', () => {
     el.style.position = 'relative'; // Notwendig für z-index
     el.style.zIndex = '10';
   });
-});
-
-// Füge diesen Code am Ende deiner index.js-Datei hinzu
-document.addEventListener('DOMContentLoaded', function() {
-  // Warte ein bisschen, damit alle dynamischen Elemente erstellt werden
-  setTimeout(function() {
-    // Suche nach allen p-Elementen innerhalb des sketch-Divs
-    const sketchDiv = document.getElementById('sketch');
-    if (sketchDiv) {
-      const paragraphs = sketchDiv.querySelectorAll('p');
-      paragraphs.forEach(p => {
-        p.style.display = 'none';
-      });
-    }
-    
-    // Suche nach typischen Label-Containern
-    const possibleSelectors = [
-      '#labelContainer',
-      '.prediction',
-      '#label',
-      '.label-container'
-    ];
-    
-    possibleSelectors.forEach(selector => {
-      const element = document.querySelector(selector);
-      if (element) {
-        element.style.display = 'none';
-      }
-    });
-  }, 1000); // Warte 1 Sekunde
 });
 
 
