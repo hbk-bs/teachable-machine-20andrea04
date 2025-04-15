@@ -126,7 +126,7 @@ function showFloatingImages(imageType) {
 function createFloatingImage(imageType) {
   // Erstelle ein neues Bild-Element
   const img = document.createElement('img');
-  img.src = `assets/${imageType}.png`; // Pfad zu deinem Bild
+  img.src = `herz.png`; // Pfad zu deinem Bild
   img.classList.add(`${imageType}-floating-img`);
   
   // Stil für das fliegende Bild
