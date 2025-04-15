@@ -17,7 +17,9 @@ function preload() {
 }
 
 function setup() {
-	createCanvas(320, 260);
+	const canvas = createCanvas(320, 260);
+
+	canvas.parent('sketch')
 	// Create the video
 	video = createCapture(VIDEO);
 	video.size(320, 240);
@@ -51,66 +53,54 @@ function gotResult(results) {
 	// console.log(results[0]);
 	label = results[0].label;
 
+
+		showFloatingImages(label.toLowerCase());
+
+	
+	/*
 	// Wenn Herz erkannt – zeige das Bild
 	if (label.toLowerCase() === "heart") {
-		showHeartImage();
+		showFloatingImages('heart');
+
 	}
 
 	// Wenn Dreieck erkannt – zeige das Bild
 	if (label.toLowerCase() === "triangle") {
-		showTriangleImage();
+		showFloatingImages('triangle');
+
 	}
 
 	// Wenn peace erkannt – zeige das Bild
 	if (label.toLowerCase() === "peace") {
-		showPeaceImage();
+		showFloatingImages('peace');
+
 	}
 
 	// Wenn rock erkannt – zeige das Bild
 	if (label.toLowerCase() === "rock") {
-		showRockImage();
+		showFloatingImages('rock');
+
 	}
 
 	// Wenn stop erkannt – zeige das Bild
 	if (label.toLowerCase() === "stop") {
-		showStopImage();
+		showFloatingImages('stop');
+
 	}
 
 	// Wenn telephone erkannt – zeige das Bild
 	if (label.toLowerCase() === "telephone") {
-		showTelephoneImage();
+		showFloatingImages('telephone');
 	}
 
+	*/
 	
 	// Classifiy again!
 	classifyVideo();
 }
 
-function showHeartImage() {
-  // Statt eines großen Bildes in der Mitte
-  // Erzeuge viele kleine Bilder, die nach oben schweben
-  showFloatingImages('heart');
-}
 
-function showTriangleImage() {
-  showFloatingImages('triangle');
-}
 
-function showPeaceImage() {
-  showFloatingImages('peace');
-}
-
-function showRockImage() {
-  showFloatingImages('rock');
-}
-
-function showStopImage() {
-  showFloatingImages('stop');
-}
-
-function showTelephoneImage() {
-  showFloatingImages('telephone');
-}
 
 // Diese Funktion erzeugt viele kleine, aufsteigende Bilder
 function showFloatingImages(imageType) {
