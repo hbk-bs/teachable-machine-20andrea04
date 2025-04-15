@@ -112,13 +112,13 @@ function showTelephoneImage() {
   showFloatingImages('telephone');
 }
 
-// Diese Funktion erzeugt viele kleine, aufsteigende Bilder
+// Diese Funktion erzeugt mehrere aufsteigende Bilder
 function showFloatingImages(imageType) {
-  // Erzeuge mehrere Bilder über Zeit verteilt
+  // Erzeuge 5 Bilder mit Zeitabstand
   for (let i = 0; i < 5; i++) {
     setTimeout(() => {
       createFloatingImage(imageType);
-    }, i * 400); // Erzeuge alle 200ms ein neues Bild
+    }, i * 400);
   }
 }
 
@@ -129,40 +129,14 @@ function createFloatingImage(imageType) {
   img.src = `assets/images/${imageType}.png`;
   img.classList.add(`${imageType}-floating-img`);
   
-  // Stil für das fliegende Bild - niedrigerer z-index
+  // Stil für das fliegende Bild
   img.style.position = 'absolute';
   img.style.width = '50px';
   img.style.height = 'auto';
-  img.style.zIndex = '1'; // Niedriger z-index, damit es hinter dem Video erscheint
+  img.style.zIndex = '1'; // Niedrigerer z-index als das Video
   
-  // Platzierung der Bilder außerhalb des Kamerabereichs
-  // Annahme: Die Kamera ist in der Mitte des Bildschirms
-  const videoElement = document.getElementById('video'); // Ersetze 'video' mit der ID deines Video-Elements
-  
-  // Bestimme die Position und Dimensionen des Video-Elements
-  let videoRect = null;
-  try {
-    videoRect = videoElement ? videoElement.getBoundingClientRect() : null;
-  } catch (e) {
-    // Fallback, wenn wir das Video nicht finden können
-    videoRect = {
-      left: window.innerWidth / 2 - 160,  // Angenommene Video-Breite: 320px
-      top: window.innerHeight / 2 - 120,  // Angenommene Video-Höhe: 240px
-      width: 320,
-      height: 240
-    };
-  }
-  
-  // Wähle zufällig links oder rechts vom Video
-  let randomX;
-  if (Math.random() > 0.5) {
-    // Links vom Video
-    randomX = Math.floor(Math.random() * (videoRect.left - 50));
-  } else {
-    // Rechts vom Video
-    randomX = Math.floor(Math.random() * (window.innerWidth - videoRect.left - videoRect.width - 50)) + 
-              videoRect.left + videoRect.width;
-  }
+  // Einfache Positionierung - nutze den gesamten Bildschirm
+  const randomX = Math.floor(Math.random() * (window.innerWidth - 50));
   
   // Start unterhalb des sichtbaren Bereichs
   img.style.left = `${randomX}px`;
@@ -198,8 +172,15 @@ function createFloatingImage(imageType) {
   }, 8000);
 }
 
-// Füge dies zu deinem bestehenden Code hinzu oder in deine CSS-Datei
-document.getElementById('video').style.zIndex = '10'; // Ersetze 'video' mit der ID deines Video-Elements
+// Führe dies nach dem Laden der Seite aus
+document.addEventListener('DOMContentLoaded', () => {
+  // Setze den z-index des Videoelements höher
+  const videoElements = document.querySelectorAll('video, canvas, .webcam-container');
+  videoElements.forEach(el => {
+    el.style.position = 'relative'; // Notwendig für z-index
+    el.style.zIndex = '10';
+  });
+});
 
 
 
