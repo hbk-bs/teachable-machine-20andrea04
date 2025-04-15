@@ -126,28 +126,54 @@ function showFloatingImages(imageType) {
 function createFloatingImage(imageType) {
   // Erstelle ein neues Bild-Element
   const img = document.createElement('img');
-  img.src = `assets/images/${imageType}.png`; // Korrekter Pfad zum Bild im assets/images Ordner
+  img.src = `assets/images/${imageType}.png`;
   img.classList.add(`${imageType}-floating-img`);
   
-  // Stil für das fliegende Bild
+  // Stil für das fliegende Bild - niedrigerer z-index
   img.style.position = 'absolute';
-  img.style.width = '50px'; // Kleinere Größe
+  img.style.width = '50px';
   img.style.height = 'auto';
-  img.style.zIndex = '100';
+  img.style.zIndex = '1'; // Niedriger z-index, damit es hinter dem Video erscheint
   
-  // Zufällige horizontale Position
-  const randomX = Math.floor(Math.random() * (window.innerWidth - 50));
+  // Platzierung der Bilder außerhalb des Kamerabereichs
+  // Annahme: Die Kamera ist in der Mitte des Bildschirms
+  const videoElement = document.getElementById('video'); // Ersetze 'video' mit der ID deines Video-Elements
+  
+  // Bestimme die Position und Dimensionen des Video-Elements
+  let videoRect = null;
+  try {
+    videoRect = videoElement ? videoElement.getBoundingClientRect() : null;
+  } catch (e) {
+    // Fallback, wenn wir das Video nicht finden können
+    videoRect = {
+      left: window.innerWidth / 2 - 160,  // Angenommene Video-Breite: 320px
+      top: window.innerHeight / 2 - 120,  // Angenommene Video-Höhe: 240px
+      width: 320,
+      height: 240
+    };
+  }
+  
+  // Wähle zufällig links oder rechts vom Video
+  let randomX;
+  if (Math.random() > 0.5) {
+    // Links vom Video
+    randomX = Math.floor(Math.random() * (videoRect.left - 50));
+  } else {
+    // Rechts vom Video
+    randomX = Math.floor(Math.random() * (window.innerWidth - videoRect.left - videoRect.width - 50)) + 
+              videoRect.left + videoRect.width;
+  }
   
   // Start unterhalb des sichtbaren Bereichs
   img.style.left = `${randomX}px`;
-  img.style.bottom = '-50px'; // Starte unterhalb des Bildschirms
+  img.style.bottom = '-50px';
   
   // Füge das Bild zum Body hinzu
   document.body.appendChild(img);
   
   // Animation: Bewege das Bild nach oben
   let position = -50;
-  const speed = 2 + Math.random() * 3; // Zufällige Geschwindigkeit
+  const speed = 2 + Math.random() * 3;
   
   const moveUp = () => {
     position += speed;
@@ -164,13 +190,16 @@ function createFloatingImage(imageType) {
   
   moveUp();
   
-  // Sicherheitsmaßnahme: Nach einer bestimmten Zeit das Bild entfernen
+  // Sicherheitsmaßnahme
   setTimeout(() => {
     if (img.parentNode) {
       img.remove();
     }
   }, 8000);
 }
+
+// Füge dies zu deinem bestehenden Code hinzu oder in deine CSS-Datei
+document.getElementById('video').style.zIndex = '10'; // Ersetze 'video' mit der ID deines Video-Elements
 
 
 
