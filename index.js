@@ -87,93 +87,91 @@ function gotResult(results) {
 }
 
 function showHeartImage() {
-	// Prüfen ob schon ein Herz angezeigt wird
-	if (document.querySelector(".heart-img")) return;
-  
-	const img = document.createElement("img");
-	img.src = "assets/images/herz.png"; // Pfad zum Bild
-	img.classList.add("heart-img");
-	document.body.appendChild(img);
-  
-	// Nach 3 Sekunden wieder entfernen
-	setTimeout(() => {
-	  img.remove();
-	}, 1000);
+  // Statt eines großen Bildes in der Mitte
+  // Erzeuge viele kleine Bilder, die nach oben schweben
+  showFloatingImages('heart');
+}
+
+function showTriangleImage() {
+  showFloatingImages('triangle');
+}
+
+function showPeaceImage() {
+  showFloatingImages('peace');
+}
+
+function showRockImage() {
+  showFloatingImages('rock');
+}
+
+function showStopImage() {
+  showFloatingImages('stop');
+}
+
+function showTelephoneImage() {
+  showFloatingImages('telephone');
+}
+
+// Diese Funktion erzeugt viele kleine, aufsteigende Bilder
+function showFloatingImages(imageType) {
+  // Erzeuge mehrere Bilder über Zeit verteilt
+  for (let i = 0; i < 15; i++) {
+    setTimeout(() => {
+      createFloatingImage(imageType);
+    }, i * 200); // Erzeuge alle 200ms ein neues Bild
   }
+}
+
+// Diese Funktion erzeugt ein einzelnes, animiertes Bild
+function createFloatingImage(imageType) {
+  // Erstelle ein neues Bild-Element
+  const img = document.createElement('img');
+  img.src = `assets/${imageType}.png`; // Pfad zu deinem Bild
+  img.classList.add(`${imageType}-floating-img`);
+  
+  // Stil für das fliegende Bild
+  img.style.position = 'absolute';
+  img.style.width = '50px'; // Kleinere Größe
+  img.style.height = 'auto';
+  img.style.zIndex = '100';
+  
+  // Zufällige horizontale Position
+  const randomX = Math.floor(Math.random() * (window.innerWidth - 50));
+  
+  // Start unterhalb des sichtbaren Bereichs
+  img.style.left = `${randomX}px`;
+  img.style.bottom = '-50px'; // Starte unterhalb des Bildschirms
+  
+  // Füge das Bild zum Body hinzu
+  document.body.appendChild(img);
+  
+  // Animation: Bewege das Bild nach oben
+  let position = -50;
+  const speed = 2 + Math.random() * 3; // Zufällige Geschwindigkeit
+  
+  const moveUp = () => {
+    position += speed;
+    img.style.bottom = `${position}px`;
+    
+    // Wenn das Bild den oberen Rand erreicht hat, entferne es
+    if (position > window.innerHeight + 50) {
+      img.remove();
+      return;
+    }
+    
+    requestAnimationFrame(moveUp);
+  };
+  
+  moveUp();
+  
+  // Sicherheitsmaßnahme: Nach einer bestimmten Zeit das Bild entfernen
+  setTimeout(() => {
+    if (img.parentNode) {
+      img.remove();
+    }
+  }, 8000);
+}
 
 
-  function showTriangleImage() {
-	// Prüfen ob schon ein Dreieck angezeigt wird
-	if (document.querySelector(".triangle-img")) return;
-  
-	const img = document.createElement("img");
-	img.src = "assets/images/dreieck.png"; // Pfad zum Bild
-	img.classList.add("triangle-img");
-	document.body.appendChild(img);
-  
-	// Nach 3 Sekunden wieder entfernen
-	setTimeout(() => {
-	  img.remove();
-	}, 1000);
-  }
 
-  function showPeaceImage() {
-	// Prüfen ob schon ein Peace angezeigt wird
-	if (document.querySelector(".peace-img")) return;
-  
-	const img = document.createElement("img");
-	img.src = "assets/images/peace.png"; // Pfad zum Bild
-	img.classList.add("peace-img");
-	document.body.appendChild(img);
-  
-	// Nach 3 Sekunden wieder entfernen
-	setTimeout(() => {
-	  img.remove();
-	}, 1000);
-  }
-
-  function showRockImage() {
-	// Prüfen ob schon ein rock angezeigt wird
-	if (document.querySelector(".rock-img")) return;
-  
-	const img = document.createElement("img");
-	img.src = "assets/images/rock.png"; // Pfad zum Bild
-	img.classList.add("rock-img");
-	document.body.appendChild(img);
-  
-	// Nach 3 Sekunden wieder entfernen
-	setTimeout(() => {
-	  img.remove();
-	}, 1000);
-  }
-
-  function showStopImage() {
-	// Prüfen ob schon ein stop angezeigt wird
-	if (document.querySelector(".stop-img")) return;
-  
-	const img = document.createElement("img");
-	img.src = "assets/images/stop.png"; // Pfad zum Bild
-	img.classList.add("stop-img");
-	document.body.appendChild(img);
-  
-	// Nach 3 Sekunden wieder entfernen
-	setTimeout(() => {
-	  img.remove();
-	}, 1000);
-  }
-
-  function showTelephoneImage() {
-	// Prüfen ob schon ein telephone angezeigt wird
-	if (document.querySelector(".telephone-img")) return;
-  
-	const img = document.createElement("img");
-	img.src = "assets/images/telefon.png"; // Pfad zum Bild
-	img.classList.add("telephone-img");
-	document.body.appendChild(img);
-  
-	// Nach 3 Sekunden wieder entfernen
-	setTimeout(() => {
-	  img.remove();
-	}, 1000);
-  }
 
