@@ -115,10 +115,10 @@ function showTelephoneImage() {
 // Diese Funktion erzeugt viele kleine, aufsteigende Bilder
 function showFloatingImages(imageType) {
   // Erzeuge mehrere Bilder über Zeit verteilt
-  for (let i = 0; i < 15; i++) {
+  for (let i = 0; i < 5; i++) {
     setTimeout(() => {
       createFloatingImage(imageType);
-    }, i * 200); // Erzeuge alle 200ms ein neues Bild
+    }, i * 400); // Erzeuge alle 200ms ein neues Bild
   }
 }
 
