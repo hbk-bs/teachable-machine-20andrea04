@@ -115,10 +115,10 @@ function showTelephoneImage() {
 // Diese Funktion erzeugt viele kleine, aufsteigende Bilder
 function showFloatingImages(imageType) {
   // Erzeuge weniger Bilder - von 15 auf 5 reduziert
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 1; i++) {
     setTimeout(() => {
       createFloatingImage(imageType);
-    }, i * 400); // Erzeuge alle 400ms ein neues Bild
+    }, i * 600); // Erzeuge alle 400ms ein neues Bild
   }
 }
 
@@ -153,7 +153,7 @@ function createFloatingImage(imageType) {
     img.style.bottom = `${position}px`;
     
     // Wenn das Bild den oberen Rand erreicht hat, entferne es
-    if (position > window.innerHeight + 50) {
+    if (position > window.innerHeight) {
       img.remove();
       return;
     }
